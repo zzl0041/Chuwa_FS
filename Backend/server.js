@@ -4,6 +4,7 @@ const authRoutes = require('./routes/auth');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const productRoutes = require('./routes/product')
+const cartRoutes = require('./routes/cart');
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', productRoutes);
+app.use('/api', cartRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
