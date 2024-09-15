@@ -15,7 +15,7 @@ const JWT_SECRET = filteredLines[1].split('=')[1];
 
 // Generate JWT token
 const generateToken = (userId) => {
-  return jwt.sign({ userId }, JWT_SECRET, {
+  return jwt.sign({ id: userId }, JWT_SECRET, {
     expiresIn: '1h',
   });
 };
