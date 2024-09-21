@@ -1,0 +1,98 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9; /* Light background */
+}
+
+.signup-form {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+input {
+  width: 90%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: #6c63ff; /* Focus color */
+  outline: none;
+}
+
+input.error {
+  border-color: red; /* Border color for error */
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #6c63ff; /* Button color */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold; /* Make button text bold */
+}
+
+button:hover {
+  background-color: #5755ea; /* Darker shade on hover */
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem; /* Adjust font size */
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  text-align: left; /* Align error text to left */
+}
+.email {
+  text-align: left;
+  width: 90%;
+  padding: 0;
+  margin: 0rem 0;
+  color: gray;
+}
+.pass {
+  text-align: left;
+  width: 90%;
+  padding: 0;
+  margin: 0rem 0;
+  color: gray;
+}
+p {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+p a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+.btn {
+  margin-top: 20px;
+}
+.haha {
+  margin-right: 3px;
+}

@@ -1,15 +1,55 @@
 .footer {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-  }
-  
-  .footer-container {
-    font-size: 14px;
-  }
-  
+  background-color: #121212; /* Darker background */
+  color: white;
+  padding: 10px 20px; /* Adjust padding for uniform space */
+  position: fixed; /* Keeps the footer at the bottom */
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column; /* Keeps the individual sections stacked */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center aligns items vertically */
+  width: 100%; /* Ensures full width */
+}
+
+.footer-container {
+  font-size: 14px;
+  margin: 15px; /* No margin for cleaner alignment */
+}
+
+.footer-container a {
+  color: white;
+  margin: 10px 20px; /* Space between links */
+  text-decoration: none;
+  transition: color 0.3s; /* Smooth hover transition */
+}
+
+.footer-container a:hover {
+  color: #ccc; /* Change color on hover */
+}
+
+.social-icons {
+  justify-content: center; /* Centers the social icons */
+  margin: 1px 10px; /* Space around social icons */
+}
+
+.social-icons span {
+  font-size: 20px; /* Size of the icons */
+  margin: 0 10px; /* Space between icons */
+  color: white; /* Icon color */
+  transition: color 0.3s; /* Smooth hover transition */
+}
+
+.social-icons span:hover {
+  color: #ccc; /* Change color on hover */
+}
+
+.footer p {
+  margin: 10px 0; /* Space around copyright text */
+  font-size: 14px;
+}

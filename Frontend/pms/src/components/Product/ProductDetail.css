@@ -1,0 +1,86 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7; /* Light background to match design */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.product-details {
+  display: flex;
+  background-color: white; /* Card background color */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+}
+
+.product-image {
+  max-width: 300px;
+  margin-right: 20px;
+  border-radius: 8px; /* Round image corners for consistency */
+}
+
+.product-info {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.category {
+  color: #7f8c8d; /* Grey color for category */
+  margin-bottom: 5px; /* Spacing below the category */
+}
+
+.product-title {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 20px;
+  color: #e74c3c; /* Red for price */
+  margin: 5px 0;
+}
+
+.status {
+  color: #e67e22; /* Orange for status */
+  margin-bottom: 10px; /* Spacing below the status */
+}
+
+.description {
+  margin: 15px 0;
+  line-height: 1.5; /* Improve readability */
+}
+
+.button-container {
+  display: flex; /* Align buttons horizontally */
+  gap: 10px; /* Space between buttons */
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  background-color: #3498db; /* Blue for 'Add to Cart' */
+  color: white;
+}
+
+.edit {
+  background-color: #95a5a6; /* Grey for 'Edit' */
+  color: white;
+}
