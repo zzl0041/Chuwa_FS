@@ -8,8 +8,8 @@ This API supports managing a shopping cart and products, allowing users to add, 
 ### Product Management
 - POST /api/products: Create a product (Authenticated users).
 - GET /api/products: Fetch all products (Public).
-GET /api/products/
-- : Get a product by ID (Public).
+- GET /api/products/
+: Get a product by ID (Public).
 - PUT /api/products/
 : Update a product (Creator only).
 - DELETE /api/products/
