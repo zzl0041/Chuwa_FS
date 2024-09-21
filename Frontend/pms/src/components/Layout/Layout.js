@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-Í;
 
 const Layout = ({ children }) => {
   return (

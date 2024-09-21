@@ -61,7 +61,8 @@ const SignIn = () => {
 
           <div class="additional-links">
             <p class="no-account">
-              Don’t have an account? <a href="#">Sign up</a>
+              Don’t have an account? 
+              <a href="#">Sign up</a>
               <a href="#" className="haha">
                 Forgot password?
               </a>
