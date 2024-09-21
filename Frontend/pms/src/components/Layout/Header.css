@@ -31,9 +31,7 @@
   font-size: 15px; /* Smaller font */
   color: #f0f0f0; /* Lighter color for contrast */
 }
-.search-container {
-  position: relative; /* Position relative for positioning the icon */
-}
+
 .search-bar {
   padding: 10px 5px; /* Reduced padding */
   border-radius: 5px; /* More rounded corners */
@@ -42,19 +40,9 @@
   margin-left: 0px; /* Space between title and search bar */
   background-color: #fff; /* White background */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
-  margin-right: 300px;
+  margin-right: 3 00px;
 }
-.search-icon {
-  position: absolute; /* Absolute positioning for icon */
-  right: 310px; /* Position icon on the right */
-  top: 50%; /* Center icon vertically */
-  transform: translateY(-50%); /* Adjust for proper vertical alignment */
-  cursor: pointer; /* Change cursor to pointer */
-  pointer-events: none; /* Allow clicks only on input */
-}
-.search-icon:hover {
-  background-color: #f0f0f0; /* Optional: Hover effect */
-}
+
 .search-bar::placeholder {
   color: #888;
   text-align: left; /* Placeholder text color */
@@ -81,11 +69,4 @@
   color: #fff; /* White text */
   display: flex;
   align-items: center; /* Center icon vertically */
-}
-
-.user-icon,
-.star-icon {
-  margin: 0 5px;
-  color: white;
-  /* Spacing around icons */
 }
