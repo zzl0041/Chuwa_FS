@@ -20,8 +20,8 @@ function App() {
           <Route path="/create-product" element={<CreateProduct />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           {/* <Route path="/products/" element={<ProductList />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} /> */}
+          {/* <Route path="/cart" element={<Cart />} /> */}
           <Route path="*" element={<ErrorPage />} />
           
         </Routes>

@@ -5,9 +5,13 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart');
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Connect to the database
 connectDB();
