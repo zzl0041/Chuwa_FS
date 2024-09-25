@@ -116,6 +116,37 @@ router.post('/cart/add', authenticateToken, async (req, res) => {
     }
 });
 
+// Update a product to the cart
+router.post('/cart/update', authenticateToken, async (req, res) => {
+    const { productId, quantity } = req.body;
+
+    if (!productId || !quantity) return res.status(400).json({ message: 'Product ID and quantity are required' });
+
+    try {
+        const cart = await Cart.findOne({ userId: req.user.id });
+        if (cart) {
+            // Update existing cart
+            const itemIndex = cart.items.findIndex(item => item.productId.toString() === productId);
+            if (itemIndex > -1) {
+                cart.items[itemIndex].quantity = quantity;
+            } else {
+                cart.items.push({ productId, quantity });
+            }
+            await cart.save();
+        } else {
+            // Create new cart
+            const newCart = new Cart({
+                userId: req.user.id,
+                items: [{ productId, quantity }]
+            });
+            await newCart.save();
+        }
+        res.status(200).json({ message: 'Product updated to cart' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating product to cart', error });
+    }
+});
+
 // Remove a product from the cart
 router.post('/cart/remove', authenticateToken, async (req, res) => {
     const { productId, quantity } = req.body;

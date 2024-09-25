@@ -4,8 +4,9 @@ import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
 import ChangePassword from "./components/Auth/ChangePassword";
 import CreateProduct from "./components/Product/CreateProduct";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./components/Error/ErrorPage";
 import ProductDetail from "./components/Product/ProductDetail";
+import Cart from "./components/Cart/Cart";
 import Default from "./Default";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route path="/products/:id" element={<ProductDetail />} />
           {/* <Route path="/products/" element={<ProductList />} />
           <Route path="/checkout" element={<Checkout />} /> */}
-          {/* <Route path="/cart" element={<Cart />} /> */}
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
           
         </Routes>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cart from "../Cart/Cart"; // Import the Cart component
 import "./Header.css";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
+  const [cartVisible, setCartVisible] = useState(false); // State for cart visibility
   const navigate = useNavigate();
 
-  // Check if the user is authenticated by checking for a token in localStorage
+  // Check if the user is authenticated and fetch cart total
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -16,7 +18,6 @@ const Header = () => {
     }
   }, []);
 
-  // Fetch cart total using the token
   const fetchCartTotal = async (token) => {
     try {
       const response = await fetch("http://localhost:3004/api/cart", {
@@ -30,18 +31,22 @@ const Header = () => {
       if (response.ok) {
         setCartTotal(data.totalPrice);
       } else {
-        console.error("Failed to fetch cart data", data.message);
+        console.error("Failed to fetch cart total", data.message);
       }
     } catch (error) {
-      console.error("Error fetching cart data", error);
+      console.error("Error fetching cart total", error);
     }
   };
 
-  // Handle sign-out by clearing the token and redirecting to the sign-in page
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
     navigate("/signin");
+  };
+
+  // Toggle the cart visibility
+  const toggleCart = (state) => {
+    setCartVisible(state);
   };
 
   return (
@@ -53,7 +58,6 @@ const Header = () => {
         <input type="text" placeholder="Search" className="search-bar" />
 
         <div className="user-options">
-          {/* Show 'Sign In' or 'Sign Out' based on authentication status */}
           {isAuthenticated ? (
             <button onClick={handleSignOut} className="signout-link">
               Sign Out
@@ -64,17 +68,17 @@ const Header = () => {
             </a>
           )}
 
-          {/* Show cart icon with total price only if the user is authenticated */}
+          {/* Cart Button */}
           {isAuthenticated && (
-            <div className="cart-icon">
-              <span role="img" aria-label="cart">
-                🛒
-              </span>{" "}
-              ${cartTotal.toFixed(2)}
-            </div>
+            <button className="cart-icon" onClick={() => toggleCart(true)}>
+              View Cart 🛒 ${cartTotal.toFixed(2)}
+            </button>
           )}
         </div>
       </div>
+
+      {/* Render the Cart component */}
+      <Cart isVisible={cartVisible} toggleCart={toggleCart} />
     </header>
   );
 };
