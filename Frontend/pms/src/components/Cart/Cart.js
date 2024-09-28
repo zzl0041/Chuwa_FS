@@ -62,7 +62,7 @@ const Cart = ({ isVisible, toggleCart }) => {
     }
   };
 
-  const removeProductFromCart = async (productId) => {
+  const removeProductFromCart = async (productId, quantity) => {
     const token = localStorage.getItem('token');
     try {
       const response = await fetch('http://localhost:3004/api/cart/remove', {
@@ -71,7 +71,7 @@ const Cart = ({ isVisible, toggleCart }) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ productId }),
+        body: JSON.stringify({ productId, quantity }),
       });
       const data = await response.json();
       if (response.ok) {
@@ -137,9 +137,8 @@ const Cart = ({ isVisible, toggleCart }) => {
   };
 
   // Calculate values for subtotal, tax, discount, and total
-  const subtotal = cart?.items.reduce((sum, item) => sum + item.productId.price * item.quantity, 0) || 0;
+  const subtotal = cartTotal;
   const tax = subtotal * TAX_RATE;
-  const discountAmount = discountInfo;
   const estimatedTotal = subtotal + tax;
 
   // Handle clicks outside the cart to close it
@@ -169,7 +168,7 @@ const Cart = ({ isVisible, toggleCart }) => {
         <div className="cart-items">
           {cart.items.map((item) => (
             <div key={item.productId._id} className="cart-item">
-              <img src={item.productId.image} alt={item.productId.name} />
+              <img className="cartImg" src={item.productId.image} alt={item.productId.name} />
               <div className="cart-item-details">
                 <h4>{item.productId.name}</h4>
                 <p>Price: ${item.productId.price}</p>
@@ -177,19 +176,18 @@ const Cart = ({ isVisible, toggleCart }) => {
                 <div className="quantity-controls">
                   <button onClick={() => updateProductQuantity(item.productId._id, item.quantity + 1)}>+</button>
                   <button onClick={() => updateProductQuantity(item.productId._id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
-                  <button onClick={() => removeProductFromCart(item.productId._id)}>Remove</button>
+                  <button onClick={() => removeProductFromCart(item.productId._id, item.quantity)}>Remove</button>
                 </div>
               </div>
             </div>
           ))}
 
-            <div className="discount-section">
+<div className="discount-section">
             <input
               type="text"
-              placeholder={"Discount Code"}
+              placeholder={discountInfo}
               value={discountCode}
               onChange={(e) => setDiscountCode(e.target.value)}
-              disabled={!!discountInfo} // Disable if a discount is already applied
             />
             <button onClick={applyDiscount} disabled={!!discountInfo}>
               Apply Discount
@@ -197,24 +195,29 @@ const Cart = ({ isVisible, toggleCart }) => {
           </div>
 
 
+      {cartTotal ? (
+
           <div className="cart-summary">
             <div className="summary-item">
-              <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <p>Subtotal:</p>
+              <p>${cartTotal.toFixed(2)}</p>
             </div>
             <div className="summary-item">
-              <span>Tax (9.125%):</span>
-              <span>${tax.toFixed(2)}</span>
+              <p>Tax (9.125%):</p>
+              <p>${tax.toFixed(2)}</p>
             </div>
             <div className="summary-item">
-              <span>Discount:</span>
-              <span>${discountAmount}</span>
+              <p>Discount:</p>
+              <p>${discountInfo}</p>
             </div>
             <div className="summary-item total">
-              <span>Estimated Total:</span>
-              <span>${estimatedTotal.toFixed(2)}</span>
+              <p>Estimated Total:</p>
+              <p>${estimatedTotal.toFixed(2)}</p>
             </div>
           </div>
+                ):(
+                    <p>Checkout info missing.</p>
+                  )}
 
           <button className="checkout-btn" onClick={checkout}>
             Checkout

@@ -1,12 +1,17 @@
 import React from "react";
 import "./Footer.css";
 import { FaYoutube, FaTwitter, FaFacebook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>©2022 All Rights Reserved.</p>
+        <p
+          onClick={() => navigate("/")}
+        >©2022 All Rights Reserved.</p>
         <div className="social-icons">
           <span>
             <FaYoutube aria-label="Youtube" />

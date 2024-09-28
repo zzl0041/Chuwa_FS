@@ -63,6 +63,13 @@ button:hover {
   margin-bottom: 1rem;
   text-align: left; /* Align error text to left */
 }
+.username {
+  text-align: left;
+  width: 90%;
+  padding: 0;
+  margin: 0rem 0;
+  color: gray;
+}
 .email {
   text-align: left;
   width: 90%;

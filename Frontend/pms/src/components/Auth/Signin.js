@@ -50,6 +50,8 @@ const SignIn = () => {
 
       // Save the token to local storage
       localStorage.setItem("token", data.token);
+      // localStorage.setItem("userId", userId);
+
       console.log("Sign-in successful, token:", data.token);
 
       // Redirect to the /products page after successful sign-in
@@ -62,6 +64,8 @@ const SignIn = () => {
     }
   };
 
+
+  
   return (
     <div className="signin-container">
       <div className="signin-form">
@@ -87,13 +91,13 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button
+            <a
               type="button"
               className="show-password"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? "Hide" : "Show"}
-            </button>
+            </a>
           </div>
 
           {error && <p className="error-message">{error}</p>}
@@ -105,11 +109,11 @@ const SignIn = () => {
           <div className="additional-links">
             <p className="no-account">
               Don’t have an account?
-              <a href="/signup">Sign up</a>
+            </p>
+            <a href="/signup">Sign up</a>
               <a href="/change-password" className="forgot-password">
                 Forgot password?
               </a>
-            </p>
           </div>
         </form>
       </div>
